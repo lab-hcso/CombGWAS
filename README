@@ -1,0 +1,10 @@
+GWIS_Comorbidity_and_Single_disorder include two functions that could be utilized to infer to summary statistics of 
+comorbid disorders or only single disorder based on the summary statistics of corresponding traits. To use these two
+functions, we need to have the following information about the involved traits.
+# harmon_data: harmonized summary statistics for two traits derived from TwosampleMR
+# Size_TraitA: Sample size of trait A
+# Size_TraitB: Sample size of trait B
+# TraitA_preval: Disease prevalence of trait A
+# TraitB_preval: Disease prevalence of trait B
+# Comorbid_preval: Disease prevalence of comorbid trait
+# LDSR_intercept : LD score regression intercept  
