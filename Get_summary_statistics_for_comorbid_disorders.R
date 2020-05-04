@@ -11,7 +11,7 @@
 # LDSR_intercept : LD score regression intercept  
 # Notes: Summary statistics are based on the shared set of SNPs for two traits
 #*****************************************************************************************************************
-GWISForComorbidity <- function(harmon_data,Size_TraitA,Size_TraitB,TraitA_preval,TraitB_preval,Comorbid_preval,LDSR_intercept){
+Get_Summary_Statistics_for_Comorbidity <- function(harmon_data,Size_TraitA,Size_TraitB,TraitA_preval,TraitB_preval,Comorbid_preval,LDSR_intercept){
   
   library(locfdr)
   library(sfsmisc)
