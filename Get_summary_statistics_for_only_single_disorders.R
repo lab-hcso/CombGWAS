@@ -1,7 +1,7 @@
 
 
 #*****************************************************************************************************************
-# Function: Infer summary statistics of comorbid disorder from corresponding traits, eg, SCZ and BIP(Bipolar) 
+# Function: Infer summary statistics of only single disorder from corresponding traits, eg, SCZ and BIP(Bipolar) 
 # Parameters:
 # harmon_data: harmonized summary statistics for two traits derived from TwosampleMR
 # Size_TraitA: Sample size of trait A
@@ -12,7 +12,7 @@
 # LDSR_intercept : LD score regression intercept  
 # Notes: Summary statistics are based on the shared set of SNPs for two traits
 #*****************************************************************************************************************
-GWISForOnlySingleTrait <- function(harmon_data,Size_TraitA,Size_TraitB,TraitA_preval,TraitB_preval,Comorbid_preval,LDSR_intercept){
+Get_Summary_Statistics_for_Only_Single_Trait <- function(harmon_data,Size_TraitA,Size_TraitB,TraitA_preval,TraitB_preval,Comorbid_preval,LDSR_intercept){
   
   library(locfdr)
   library(sfsmisc)
