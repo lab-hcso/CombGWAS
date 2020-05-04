@@ -1,6 +1,7 @@
 Infer_Summary_Statistics_for_Comorbidity_and_Single_disorder include two functions that could be utilized to infer to summary statistics of 
 comorbid disorders or only single disorder based on the summary statistics of corresponding traits. To use these two
 functions, we need to have the following information about the involved traits.
+# Description of input parameters
 # harmon_data: harmonized summary statistics for two traits derived from TwosampleMR
 # Size_TraitA: Sample size of trait A
 # Size_TraitB: Sample size of trait B
