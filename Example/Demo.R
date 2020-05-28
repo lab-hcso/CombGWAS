@@ -1,12 +1,15 @@
 #***********************************************************************************************************************
-# Demo example for the use of the two functions
-# Get_Summary_Statistics_for_Comorbidity() and Get_Summary_Statistics_for_Only_Single_Trait()
+# Demo example for the use of the functions
 # R version: 3.6.3
 # Operating system: MacOS Catalina(10.15.4)
 # Processor:2.7 GHz Dual-Core Intel Core i5
 # Memory:8 GB 1867 MHz DDR3
 #***********************************************************************************************************************
 
+
+#***********************************************************************************************************************
+# Demo code for Get_Summary_Statistics_for_Comorbidity() and Get_Summary_Statistics_for_Only_Single_Trait
+#***********************************************************************************************************************
 library(data.table)
 
 sumstats = fread("Harmonized_data_Toy_example.txt")
@@ -112,3 +115,69 @@ proc.time()-t2
 # user  system elapsed 
 # 25.606   0.463  27.336 
 fwrite(comor_result,"Toy_example_Only_Single_Trait_results.txt",sep="\t")
+
+#***********************************************************************************************************************
+# Demo code for transformation of coefficients derived from linear regression to that of logistic regression
+#***********************************************************************************************************************
+library(dplyr) 
+library(data.table)
+
+sumstats = fread("Quantitive_trait_toy_example.txt")
+# The first few lines of the sumstats look like this: 
+# SNP_hg18       SNP_hg19        SNP A1 A2   BETA     SE         N         P
+# chr2:21302112  chr2:21448607   rs428696  C  T 0.1005 0.0057 126558.92 1.972e-65
+# chr5:74664131  chr5:74628375  rs3843481  T  A 0.0682 0.0038 162085.00 7.521e-65
+# chr5:74639235  chr5:74603479  rs2335418  A  G 0.0654 0.0037 173001.00 8.583e-65
+# chr1:109628776 chr1:109827253   rs672569  G  A 0.1431 0.0082  89876.00 2.083e-64
+# chr5:74913559  chr5:74877803  rs5744672  C  T 0.0654 0.0037 172857.00 4.528e-64
+# chr2:21162627  chr2:21309122 rs28562532  C  T 0.1340 0.0076  83137.01 6.892e-64
+# Freq.A1.1000G.EUR
+# 0.7916
+# 0.4103
+# 0.4578
+# 0.8430
+# 0.4169
+# 0.8193
+
+mean_trait = 133.6
+sd_trait = 39.0
+thres = 190
+beta_cont = sumstats$BETA
+se_cont = sumstats$SE
+eaf = sumstats$Freq.A1.1000G.EUR
+rank_normalized_y = TRUE
+
+beta_esti = Binary_GWAS(beta_cont = beta_cont, 
+                       mean_trait = mean_trait,  
+                       sd_trait = sd_trait, 
+                       thres_raw = thres, 
+                       eaf = eaf, 
+                       rank_normalized_y = rank_normalized_y) 
+se_esti = Binary_GWAS_SE( beta_cont = beta_cont, 
+                         se_cont = se_cont, 
+                         mean_trait = mean_trait,  
+                         sd_trait = sd_trait, 
+                         thres_raw = thres,
+                         eaf = eaf, 
+                         rank_normalized_y = rank_normalized_y) 
+zscore_esti = beta_esti/se_esti 
+pval_esti = pnorm(-abs(zscore_esti), lower.tail=TRUE)
+result_binary = cbind(sumstats[,-c(6,7,9)],beta_esti,se_esti,pval_esti)
+colnames_result_binary = c("SNP_hg18","SNP_hg19","SNP","A1","A2","N","Freq.A1","BETA","SE","P")
+colnames(result_binary) = colnames_result_binary
+# The first few lines of the result_binary look like this: 
+# SNP_hg18       SNP_hg19        SNP A1 A2         N Freq.A1      BETA          SE
+# chr2:21302112  chr2:21448607   rs428696  C  T 126558.92  0.7916 0.2107437 0.012291245
+# chr5:74664131  chr5:74628375  rs3843481  T  A 162085.00  0.4103 0.1402076 0.007868969
+# chr5:74639235  chr5:74603479  rs2335418  A  G 173001.00  0.4578 0.1346151 0.007679854
+# chr1:109628776 chr1:109827253   rs672569  G  A  89876.00  0.8430 0.3044443 0.018230000
+# chr5:74913559  chr5:74877803  rs5744672  C  T 172857.00  0.4169 0.1344402 0.007659646
+# chr2:21162627  chr2:21309122 rs28562532  C  T  83137.01  0.8193 0.2840442 0.016771617
+# P
+# 3.376011e-66
+# 2.571352e-71
+# 4.353517e-69
+# 6.533568e-63
+# 2.883484e-69
+# 1.220762e-64
+fwrite(as.data.frame(result_binary),"Binary_summary_statistics_for_Quantitive_trait_toy_example.txt")
