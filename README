@@ -2,7 +2,7 @@ Getting started
 
 Infer_Summary_Statistics_for_Comorbidity_and_Single_disorder include two functions that could be utilized to infer to summary statistics of 
 comorbid disorders or only single disorder based on the summary statistics of corresponding traits. To use these two
-functions, we need to have the following information about the involved traits.
+functions, we need to provide the following information about the involved traits:
 # Description of input parameters
 # harmon_data: harmonized summary statistics for two traits derived from TwosampleMR
 # Size_TraitA: Sample size of trait A
@@ -11,6 +11,21 @@ functions, we need to have the following information about the involved traits.
 # TraitB_preval: Disease prevalence of trait B
 # Comorbid_preval: Disease prevalence of comorbid trait
 # LDSR_intercept : LD score regression intercept  
+
+These two functions can also applied to clinically defined categories of quantitative traits. To realize this, we need to transform coefficients
+derived from linear regression (with outcome as a continuous trait, for example LDL-C)to coefficients from logistic regression (with outcome as a binary trait, such as
+hyperlipidemia or not). This transformation can be realzied through Get_summary_statistics_for_clinically_defined_categories.R. This file include two functions, which 
+could be used to transform beta and se derived from linear regression that from logistic regression. To these two transformation functions in 
+R file, we need to provide the following information about the studied quantitative trait:
+# Description of input parameters
+# beta_cont: beta derived from linear regression
+# se_cont: se derived from linear regression
+# mean_trait: mean value of the studied quantitative trait
+# sd_trait: standard deviation of the studied quantitative trait
+# thres_raw: cut-off for the clincially-defined categories
+# eaf: effect allele frequency
+# rank_normalized_y: normalization status of the studied quantitative trait
+
 
 
 1. System requirement
