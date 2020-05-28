@@ -1,5 +1,5 @@
 #***********************************************************************************************************************
-# Demo example for the use of the two function
+# Demo example for the use of the two functions
 # Get_Summary_Statistics_for_Comorbidity() and Get_Summary_Statistics_for_Only_Single_Trait()
 #***********************************************************************************************************************
 
@@ -60,6 +60,21 @@ LDSR_intercept = 0.0172
 
 t1=proc.time()
 comor_result = Get_Summary_Statistics_for_Comorbidity(sumstats,Size_TraitA,Size_TraitB,TraitA_preval,TraitB_preval,Comorbid_preval,LDSR_intercept)
+# The first few lines of the comor_result look like this: 
+# SNP A1 A2 trait1_A1F trait2_A1F trait1_beta trait1_se trait1_pval trait2_beta
+# rs10019946  G  A    0.84500      0.858     0.04318   0.01207    0.000348       0.054
+# rs1000722  G  A    0.69613      0.650     0.01677   0.00892    0.060070       0.052
+# rs10017412  G  A    0.50589      0.517     0.01081   0.00810    0.182166       0.048
+# rs10015696  C  A    0.77792      0.718     0.02668   0.00975    0.006229       0.046
+# rs10022347  G  A    0.53411      0.551     0.01035   0.00817    0.205215       0.046
+# rs10009336  C  T    0.82956      0.825     0.02808   0.01087    0.009775       0.052
+# trait2_se  trait2_pval   avg_eaf Comorb_beta   Comorb_se  Comorb_pval
+# 0.018 1.349898e-03 0.8508361  0.06224200 0.014120332 1.043440e-05
+# 0.014 1.018892e-04 0.6754208  0.04590803 0.011043834 3.226060e-05
+# 0.012 3.167124e-05 0.5108776  0.03971895 0.009631789 3.727773e-05
+# 0.015 1.082300e-03 0.7510200  0.04742704 0.011830525 6.100987e-05
+# 0.012 6.320923e-05 0.5416925  0.03805698 0.009650545 8.029916e-05
+# 0.017 1.111040e-03 0.8275129  0.05229117 0.013305230 8.490289e-05
 fwrite(comor_result,"Toy_example_Comorbidity_results.txt",sep="\t")
 proc.time()-t1
 # user  system elapsed 
@@ -67,6 +82,28 @@ proc.time()-t1
 
 t2=proc.time()
 single_result = Get_Summary_Statistics_for_Only_Single_Trait(sumstats,Size_TraitA,Size_TraitB,TraitA_preval,TraitB_preval,Comorbid_preval,LDSR_intercept)
+# The first few lines of the single_result look like this: 
+# SNP A1 A2 trait1_A1F trait1_beta trait1_se trait1_pval trait2_A1F trait2_beta
+# rs10013305  G  A    0.71713     0.02723   0.00910    0.002787      0.776      -0.042
+# rs1000940  A  G    0.67750     0.01265   0.00872    0.146685      0.775      -0.058
+# rs10015965  A  G    0.64499     0.02966   0.00868    0.000636      0.724      -0.024
+# rs10011097  T  G    0.71706     0.02764   0.00960    0.004013      0.783      -0.036
+# rs10018280  T  G    0.71448     0.02601   0.00909    0.004213      0.775      -0.035
+# rs10014719  G  A    0.71906     0.02699   0.00977    0.005734      0.783      -0.036
+# trait2_se  trait2_pval   avg_eaf        single_beta          single_se
+# 0.017 6.744552e-03 0.7435586 0.0671505619511518 0.0172605339535787
+# 0.013 4.068667e-06 0.7212708 0.0583041023470487 0.0150250829354872
+# 0.013 3.243494e-02 0.6804601 0.0578195577080177 0.0149536179194003
+# 0.014 5.063995e-03 0.7466625 0.0635075025138351  0.016445098365256
+# 0.014 6.209665e-03 0.7416493 0.0605301085037842 0.0158725122460065
+# 0.014 5.063995e-03 0.7477647 0.0626057615264842 0.0166339433964121
+# single_pval
+# 0.000100074797039374
+# 0.000104262828414881
+# 0.000110366287248796
+# 0.000112559689128026
+# 0.000137002634960711
+# 0.000167394006908089
 proc.time()-t2  
 # user  system elapsed 
 # 25.606   0.463  27.336 
