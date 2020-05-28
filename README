@@ -40,14 +40,19 @@ quantitative trait:
    2) Dependencies(R packages):locfdr,sfsmisc,msm,rootSolve,numDeriv,mvtnorm and mvtnorm.
    3) R versions: no specific requirement as long as the dependent R packages are accessible.
    4) Other requirements: None.
-   Notes: These two functions have been tested on different R versions and operating systems, i.e., R version 3.4.4(x86_64-pc-linux-gnu (64-bit)) and
-   R version 3.6.3(x86_64-apple-darwin15.6).
+   Notes: These two functions have been tested on different R versions and operating systems, i.e., R version 3.4.4
+   (x86_64-pc-linux-gnu (64-bit)) and R version 3.6.3(x86_64-apple-darwin15.6).
    
 2. User guidance
-   You can directly download the functions to your local depository for usage. In order to use the these functions,you will need to install the dependent R packages first, i.e.,TwoSampleMR,locfdr,sfsmisc,msm,rootSolve,numDeri and mvtnorm. Sample sizes of corresponding traits can be directly extracted from the corresponding research where the GWAS study of studied trait was performed. LDSR_intercept could be calculated by LD score regression (LDSR)(https://github.com/bulik/ldsc) based on the summary statistics of two studied traits.
+   You can directly download the functions to your local depository for usage. In order to use the these functions,you will 
+   need to install the dependent R packages first, i.e.,TwoSampleMR,locfdr,sfsmisc,msm,rootSolve,numDeri and mvtnorm. Sample
+   sizes of corresponding traits can be directly extracted from the corresponding research where the GWAS study of studied 
+   trait was performed. LDSR_intercept could be calculated by LD score regression (LDSR)(https://github.com/bulik/ldsc) based
+   on the summary statistics of two studied traits.
    
 3. Demo
-   We provide toy examples and demo code to demonstrate how to use the code for the inference of summary statistics for comorbid disorder or only single disorder under the directory of Example. For more details, please refer to Example/Demo.R
+   We provide toy examples and demo code to demonstrate how to use the code for the inference of summary statistics for comorbid
+   disorder or only single disorder under the directory of Example. For more details, please refer to Example/Demo.R
 
 
 
