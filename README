@@ -1,8 +1,14 @@
 Getting started
 
-Infer_Summary_Statistics_for_Comorbidity_and_Single_disorder include two functions that could be utilized to infer to summary statistics of 
-comorbid disorders or only single disorder based on the summary statistics of corresponding traits. To use these two
-functions, we need to provide the following information about the involved traits:
+Infer_Summary_Statistics_for_Comorbidity_and_Single_disorder could be utilized to infer to summary statistics of 
+comorbid disorders or only single disorder based on the summary statistics of corresponding traits. The proposed 
+approach is based on publicly available GWAS summary statistics. Since the effect size of individual SNPs in 
+different GWAS may not correspond to the same allele, we need to integrate GWAS summary statistics from different 
+sources first, which could be realized by Make_Harmon_data.R.
+
+We can use Get_Summary_Statistics_for_Comorbidity() and Get_Summary_Statistics_for_Only_Single_Trait() to infer the
+summary statistics of comorbid disorders or only single disorder based on the summary statistics of corresponding traits.
+To realize this, we need to provide the following information about the involved traits:
 # Description of input parameters
 # harmon_data: harmonized summary statistics for two traits derived from TwosampleMR
 # Size_TraitA: Sample size of trait A
@@ -12,11 +18,12 @@ functions, we need to provide the following information about the involved trait
 # Comorbid_preval: Disease prevalence of comorbid trait
 # LDSR_intercept : LD score regression intercept  
 
-These two functions can also applied to clinically defined categories of quantitative traits. To realize this, we need to transform coefficients
-derived from linear regression (with outcome as a continuous trait, for example LDL-C)to coefficients from logistic regression (with outcome as a binary trait, such as
-hyperlipidemia or not). This transformation can be realzied through Get_summary_statistics_for_clinically_defined_categories.R. This file include two functions, which 
-could be used to transform beta and se derived from linear regression that from logistic regression. To these two transformation functions in 
-R file, we need to provide the following information about the studied quantitative trait:
+These two functions can also applied to clinically defined categories of quantitative traits. To realize this, we need to 
+transform coefficients derived from linear regression (continuous trait as outcome)to coefficients from logistic regression 
+(binary trait as outcome). This transformation can be realzied through Get_summary_statistics_for_clinically_defined_categories.R. 
+This file include two functions, which could be used to transform beta and se derived from linear regression that from logistic 
+regression. To these two transformation functions in R file, we need to provide the following information about the studied 
+quantitative trait:
 # Description of input parameters
 # beta_cont: beta derived from linear regression
 # se_cont: se derived from linear regression
@@ -37,14 +44,10 @@ R file, we need to provide the following information about the studied quantitat
    R version 3.6.3(x86_64-apple-darwin15.6).
    
 2. User guidance
-   You can directly download the functions to your local depository for usage. In order to use the these functions,you will need to install the 
-   dependent R packages first, i.e.,locfdr,sfsmisc,msm,rootSolve,numDeri and mvtnorm. harmonized summary statistics for two traits can be derived from
-   the ‘harmonise_data’ function in the R package TwoSampleMR(https://mrcieu.github.io/TwoSampleMR). Sample sizes of corresponding traits can be 
-   directly extracted from the corresponding research where the summary statistics of studied traits are derived. LDSR_intercept could be calculated
-   by LD score regression (LDSR)(https://github.com/bulik/ldsc) based on the summary statistics of two studied traits.
+   You can directly download the functions to your local depository for usage. In order to use the these functions,you will need to install the dependent R packages first, i.e.,TwoSampleMR,locfdr,sfsmisc,msm,rootSolve,numDeri and mvtnorm. Sample sizes of corresponding traits can be directly extracted from the corresponding research where the GWAS study of studied trait was performed. LDSR_intercept could be calculated by LD score regression (LDSR)(https://github.com/bulik/ldsc) based on the summary statistics of two studied traits.
    
 3. Demo
-   We provide a toy example and demo code for the use of the two functions under the directory of Example. For more details, please refer to Example/Demo.R
+   We provide toy examples and demo code to demonstrate how to use the code for the inference of summary statistics for comorbid disorder or only single disorder under the directory of Example. For more details, please refer to Example/Demo.R
 
 
 
