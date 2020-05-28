@@ -27,4 +27,4 @@ functions, we need to have the following information about the involved traits.
    by LD score regression (LDSR)(https://github.com/bulik/ldsc) based on the summary statistics of two studied traits.
    
 3. Demo
-   We provide a toy example in this depository, i.e., harmonzied dataset derived from TwoSample MR. 
+   We provide a toy example and demo code for the use of the two functions under the directory of Example. For more details, please refer to Example/Demo.R
