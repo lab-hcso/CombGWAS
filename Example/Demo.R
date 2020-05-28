@@ -1,6 +1,10 @@
 #***********************************************************************************************************************
 # Demo example for the use of the two functions
 # Get_Summary_Statistics_for_Comorbidity() and Get_Summary_Statistics_for_Only_Single_Trait()
+# R version: 3.6.3
+# Operation system: MacOS Catalina(10.15.4)
+# Processor:2.7 GHz Dual-Core Intel Core i5
+# Memory:8 GB 1867 MHz DDR3
 #***********************************************************************************************************************
 
 library(data.table)
