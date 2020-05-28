@@ -37,7 +37,7 @@ R file, we need to provide the following information about the studied quantitat
    R version 3.6.3(x86_64-apple-darwin15.6).
    
 2. User guidance
-   You can directly download the two function to your local depository for usage. In order to use the two functions,you will need to install the 
+   You can directly download the functions to your local depository for usage. In order to use the these functions,you will need to install the 
    dependent R packages first, i.e.,locfdr,sfsmisc,msm,rootSolve,numDeri and mvtnorm. harmonized summary statistics for two traits can be derived from
    the ‘harmonise_data’ function in the R package TwoSampleMR(https://mrcieu.github.io/TwoSampleMR). Sample sizes of corresponding traits can be 
    directly extracted from the corresponding research where the summary statistics of studied traits are derived. LDSR_intercept could be calculated
