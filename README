@@ -1,3 +1,5 @@
+Getting started
+
 Infer_Summary_Statistics_for_Comorbidity_and_Single_disorder include two functions that could be utilized to infer to summary statistics of 
 comorbid disorders or only single disorder based on the summary statistics of corresponding traits. To use these two
 functions, we need to have the following information about the involved traits.
@@ -9,3 +11,20 @@ functions, we need to have the following information about the involved traits.
 # TraitB_preval: Disease prevalence of trait B
 # Comorbid_preval: Disease prevalence of comorbid trait
 # LDSR_intercept : LD score regression intercept  
+
+
+1. System requirement
+   1) Operating system: Linux, MacOS, Windows.
+   2) Dependencies(R packages):locfdr,sfsmisc,msm,rootSolve,numDeriv,mvtnorm and mvtnorm.
+   3) R versions: no specific requirement as long as the dependent R packages are accessible.
+   4) Other requirements: None.
+   
+2. User guidance
+   You can directly download the two function to your local depository for usage. In order to use the two functions,you will need to install the 
+   dependent R packages first, i.e.,locfdr,sfsmisc,msm,rootSolve,numDeri and mvtnorm. harmonized summary statistics for two traits can be derived from
+   the ‘harmonise_data’ function in the R package TwoSampleMR(https://mrcieu.github.io/TwoSampleMR). Sample sizes of corresponding traits can be 
+   directly extracted from the corresponding research where the summary statistics of studied traits are derived. LDSR_intercept could be calculated
+   by LD score regression (LDSR)(https://github.com/bulik/ldsc) based on the summary statistics of two studied traits.
+   
+3. Demo
+   We provide a toy example in this depository, i.e., harmonzied dataset derived from TwoSample MR. 
