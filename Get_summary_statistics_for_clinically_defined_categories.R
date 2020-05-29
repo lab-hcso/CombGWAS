@@ -3,14 +3,14 @@
 # beta_cont: beta derived from linear regression
 # mean_trait: mean value of the studied quantitative trait
 # sd_trait: standard deviation of the studied quantitative trait
-# thres_raw: cut-off for the clincially-defined categories
+# thres_raw: cut-off for the studied quantitative trait (in original scale; not standardized)
 # eaf: effect allele frequency
-# rank_normalized_y: normalized the studied quantitative trait
+# standardized_y: TRUE/FALSE; does the GWAS summary statistics refer to a quantitative trait already standardized?
 # retured value: beta from logistic regression based on clinically-defined categories
 #**********************************************************************************************
-Binary_GWAS <- function(beta_cont, mean_trait,  sd_trait, thres_raw,  eaf , rank_normalized_y ) {  ##note that se of the coef is not required
+Binary_GWAS <- function(beta_cont, mean_trait,  sd_trait, thres_raw,  eaf , standardized_y ) {  ##note that se of the coef is not required
   
-  if (rank_normalized_y==TRUE) {
+  if (standardized_y==TRUE) {
     thres = (thres_raw - mean_trait) / sd_trait  ##standarize the threshold on a normal scale if the trait is already standardized
     mean_trait <-  0 
     sd_trait <- 1
@@ -66,16 +66,16 @@ Binary_GWAS <- function(beta_cont, mean_trait,  sd_trait, thres_raw,  eaf , rank
 # sd_trait: standard deviation of the studied quantitative trait
 # thres_raw: cut-off for the clincially-defined categories
 # eaf: effect allele frequency
-# rank_normalized_y: normalized the studied quantitative trait
+# standardized_y: TRUE/FALSE; does the GWAS summary statistics refer to a quantitative trait already standardized?
 # retured value: se from logistic regression based on clinically-defined categories
 #**********************************************************************************************
-Binary_GWAS_SE <- function(beta_cont, se_cont, mean_trait,  sd_trait, thres_raw,  eaf , rank_normalized_y = TRUE) {
+Binary_GWAS_SE <- function(beta_cont, se_cont, mean_trait,  sd_trait, thres_raw,  eaf , standardized_y = TRUE) {
   library(numDeriv)
   deriv = grad(func=Binary_GWAS, 
                x = beta_cont, 
                mean_trait = mean_trait,  sd_trait= sd_trait, thres_raw=thres_raw, 
                eaf = eaf, 
-               rank_normalized_y = TRUE,
+               standardized_y = TRUE,
                method="Richardson") 
   
   delta_var = deriv^2 * (se_cont)^2 
