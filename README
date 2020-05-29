@@ -40,7 +40,7 @@ quantitative trait:
    2) Dependencies(R packages):locfdr,sfsmisc,msm,rootSolve,numDeriv,mvtnorm and mvtnorm.
    3) R versions: no specific requirement as long as the dependent R packages are accessible.
    4) Other requirements: None.
-   Notes: These two functions have been tested on different R versions and operating systems, i.e., R version 3.4.4
+   Notes: These functions have been tested on different R versions and operating systems, i.e., R version 3.4.4
    (x86_64-pc-linux-gnu (64-bit)) and R version 3.6.3(x86_64-apple-darwin15.6).
    
 2. User guidance
