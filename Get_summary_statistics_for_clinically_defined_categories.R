@@ -1,9 +1,9 @@
 #**********************************************************************************************
 # Function: transform beta derived from linear regression to that from logistic regression
 # beta_cont: beta derived from linear regression
-# mean_trait: mean value of the studied quantitative trait
-# sd_trait: standard deviation of the studied quantitative trait
-# thres_raw: cut-off for the studied quantitative trait (in original scale; not standardized)
+# mean_trait: mean value of the studied quantitative trait(in original scale)
+# sd_trait: standard deviation of the studied quantitative trait(in original scale)
+# thres_raw: cut-off for the studied quantitative trait (in original scale)
 # eaf: effect allele frequency
 # standardized_y: TRUE/FALSE; does the GWAS summary statistics refer to a quantitative trait already standardized?
 # retured value: beta from logistic regression based on clinically-defined categories
@@ -62,9 +62,9 @@ Binary_GWAS <- function(beta_cont, mean_trait,  sd_trait, thres_raw,  eaf , stan
 # Function: transform se derived from linear regression to that from logistic regression
 # beta_cont: beta derived from linear regression
 # se_cont: se derived from linear regression
-# mean_trait: mean value of the studied quantitative trait
-# sd_trait: standard deviation of the studied quantitative trait
-# thres_raw: cut-off for the clincially-defined categories
+# mean_trait: mean value of the studied quantitative trait(in original scale)
+# sd_trait: standard deviation of the studied quantitative trait(in original scale)
+# thres_raw: cut-off for the studied quantitative trait (in original scale)
 # eaf: effect allele frequency
 # standardized_y: TRUE/FALSE; does the GWAS summary statistics refer to a quantitative trait already standardized?
 # retured value: se from logistic regression based on clinically-defined categories
