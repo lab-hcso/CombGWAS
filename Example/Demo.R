@@ -145,21 +145,21 @@ thres = 190
 beta_cont = sumstats$BETA
 se_cont = sumstats$SE
 eaf = sumstats$Freq.A1.1000G.EUR
-rank_normalized_y = TRUE
+standardized_y = TRUE
 
 beta_esti = Binary_GWAS(beta_cont = beta_cont, 
                        mean_trait = mean_trait,  
                        sd_trait = sd_trait, 
                        thres_raw = thres, 
                        eaf = eaf, 
-                       rank_normalized_y = rank_normalized_y) 
+                       standardized_y = standardized_y) 
 se_esti = Binary_GWAS_SE( beta_cont = beta_cont, 
                          se_cont = se_cont, 
                          mean_trait = mean_trait,  
                          sd_trait = sd_trait, 
                          thres_raw = thres,
                          eaf = eaf, 
-                         rank_normalized_y = rank_normalized_y) 
+                         standardized_y = standardized_y) 
 zscore_esti = beta_esti/se_esti 
 pval_esti = pnorm(-abs(zscore_esti), lower.tail=TRUE)
 result_binary = cbind(sumstats[,-c(6,7,9)],beta_esti,se_esti,pval_esti)
