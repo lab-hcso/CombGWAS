@@ -44,7 +44,7 @@ quantitative trait:
    (x86_64-pc-linux-gnu (64-bit)) and R version 3.6.3(x86_64-apple-darwin15.6).
    
 2. User guidance
-   You can directly download the functions to your local depository for usage. In order to use the these functions,you will 
+   You can directly download the functions to your local depository for usage. In order to use these functions,you will 
    need to install the dependent R packages first, i.e.,TwoSampleMR,locfdr,sfsmisc,msm,rootSolve,numDeri and mvtnorm. Sample
    sizes of corresponding traits can be directly extracted from the corresponding research where the GWAS study of studied 
    trait was performed. LDSR_intercept could be calculated by LD score regression (LDSR)(https://github.com/bulik/ldsc) based
