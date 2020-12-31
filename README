@@ -1,6 +1,6 @@
 Getting started
 
-Infer_Summary_Statistics_for_Comorbidity_and_Single_disorder could be utilized to infer to summary statistics of 
+CombGWAS could be utilized to infer to summary statistics of 
 comorbid disorders or only single disorder based on the summary statistics of corresponding traits. The proposed 
 approach is based on publicly available GWAS summary statistics. Since the effect size of individual SNPs in 
 different GWAS may not correspond to the same allele, we need to integrate GWAS summary statistics from different 
