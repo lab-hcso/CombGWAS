@@ -54,7 +54,10 @@ quantitative trait:
    We provide toy examples and demo code to demonstrate how to use the code for the inference of summary statistics for comorbid
    disorder or only single disorder under the directory of Example. For more details, please refer to Example/Demo.R
 
+#### Citation
 
+To cite this project in publications use:
 
+- L. Yin, et al., “A framework to decipher the genetic architecture of combinations of complex diseases: applications in cardiovascular medicine,” Bioinformatics, vol. 37, no. 22, 2021, pp. 4137-4147; DOI 10.1093/bioinformatics/btab417.
 
 
